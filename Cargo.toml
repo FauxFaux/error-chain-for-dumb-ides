@@ -1,0 +1,6 @@
+[package]
+name = "error-chain-for-dumb-ides"
+version = "0.1.0"
+authors = ["Chris West (Faux) <git@goeswhere.com>"]
+
+[dependencies]
