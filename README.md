@@ -29,12 +29,22 @@ Afterwards, it succeeds!
     [dev-dependencies.error-chain-for-dumb-ides]
     git = "https://github.com/FauxFaux/error-chain-for-dumb-ides"
     ```
+
+    As crates.io packages' dependencies cannot be from git repositories, you
+    can use the crates.io published version. I do not plan to maintain support
+    for old versions, even in git HEAD. To do this, instead use this fragment:
+    ```toml
+    [dev-dependencies.error-chain-for-dumb-ides]
+    version = "0"
+    ```
+
  2. Import the crate. You can do this behind a nonsense `cfg`, as this is just
     totally ignored by the IDE, and the code is run anyway:
     ```rust
     #[cfg(intellij_type_hinting)]
     extern crate error_chain_for_dumb_ides;
     ```
+
  3. Inside your `mod errors {}`, import the crate's contents:
     ```rust
     #[cfg(intellij_type_hinting)]
@@ -44,3 +54,11 @@ Afterwards, it succeeds!
 That's it! Now, suddenly, completion starts to work.
 
 Here's [an example of doing this in a real project](https://github.com/FauxFaux/fapt/commit/be72bca76643d89ed6049f62bb7bdcf5f03f2e5a).
+
+## License
+
+[`CC0`](https://creativecommons.org/share-your-work/public-domain/cc0/).
+
+Think "public domain", no rights reserved. Given this library is trivial,
+and never part of your production codebase anyway, any license is
+practically irrelevant anyway.
